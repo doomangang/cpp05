@@ -10,7 +10,7 @@ const char *Form::GradeTooLowException::what() const throw() {
 
 Form::Form() : _name("default"), _isSigned(false), _signGrade(150), _execGrade(150)
 {
-	std::cout << GREY << "Form default constructor called\n" << RESET << *this;
+	std::cout <<std::endl  << GREY << "Form default constructor called\n" << RESET << *this;
 }
 
 Form::Form(const std::string name, int signGrade, int execGrade) : _name(name), _signGrade(signGrade), _execGrade(execGrade)
@@ -20,21 +20,21 @@ Form::Form(const std::string name, int signGrade, int execGrade) : _name(name), 
 	if (signGrade > 150 || execGrade > 150)
 		throw GradeTooLowException();
 	_isSigned = false;
-	std::cout << GREY << "Custom form constructor called\n" << RESET << *this;
+	std::cout <<std::endl  << GREY << "Custom form constructor called\n" << RESET << *this;
 }
 
 Form::Form(const Form& other) : _name(other._name), _signGrade(other._signGrade), _execGrade(other._execGrade)
 {
 	*this = other;
-	std::cout << GREY << "Form copy constructor called\n" << RESET << *this;
+	std::cout << std::endl  << GREY << "Form copy constructor called\n" << RESET << *this;
 }
 
 Form::~Form() {
-	std::cout << GREY << "\nForm destructor called\n" << RESET;
+	std::cout << GREY << "Form destructor called\n" << RESET;
 }
 
 Form& Form::operator=(const Form& other) {
-	std::cout << GREY << "Form assignment operator called\n" << RESET;
+	std::cout <<std::endl  << GREY << "Form assignment operator called\n" << RESET;
 	if (this != &other) {
 		_isSigned = other._isSigned;
 	}
@@ -54,10 +54,10 @@ void	Form::beSigned(Bureaucrat& bureau) {
 }
 
 std::ostream	&operator<<(std::ostream &os, const Form& form) {
-	os << GREEN << form.getName() << CYAN << " info :" << RESET << std::endl 
+	os << std::endl << GREEN << form.getName() << CYAN << " info :" << RESET << std::endl 
 		<< "form signed: " << GREEN << (form.getSigned() ? "yes" : "no") << "," << RESET << std::endl 
 		<< "form sign grade: " << GREEN << form.getSignGrade() << "," << RESET << std::endl 
-		<< "form execution grade: " << GREEN << form.getSigned() << RESET << std::endl 
-		<< std::endl;
+		<< "form execution grade: " << GREEN << form.getExecGrade() << RESET << std::endl;
+
 	return os;
 }

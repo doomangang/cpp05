@@ -8,29 +8,17 @@ int main()
         Bureaucrat bob("Bob", 50);
         Form contract("Top Secret Contract", 40, 20);
 
-        std::cout << contract << std::endl;
-        bob.signForm(contract); // グレードが低いため署名できない
+        bob.signForm(contract);
 
         Bureaucrat alice("Alice", 30);
-        alice.signForm(contract); // 署名可能
+        alice.signForm(contract);
 
         std::cout << contract << std::endl;
     }
     catch (const std::exception &e)
     {
-        std::cerr << e.what() << std::endl;
-    }
-
-    try
-    {
-        Bureaucrat alice("Alice", 150);
-        std::cout << alice << std::endl;
-
-        alice.decrementGrade();
-    }
-    catch (const std::exception &e)
-    {
-        std::cerr << e.what() << std::endl;
+        std::cerr  <<std::endl << RED << e.what() <<RESET << std::endl
+		<< "-------------------------------" << std::endl;
     }
 
     return 0;

@@ -11,7 +11,7 @@ const char *Bureaucrat::GradeTooLowException::what() const throw() {
 
 Bureaucrat::Bureaucrat() : _name("default"), _grade(150)
 {
-	std::cout << GREY << "Bureaucrat default constructor called\n" << RESET << *this;
+	std::cout <<std::endl << GREY << "Bureaucrat default constructor called\n" << RESET << *this;
 }
 
 Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name)
@@ -21,20 +21,20 @@ Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name)
 	if (grade > 150)
 		throw GradeTooLowException();
 	_grade = grade;
-	std::cout << GREY << "Custom bureaucrat constructor called\n" << RESET << *this;
+	std::cout <<std::endl  << GREY << "Custom bureaucrat constructor called\n" << RESET << *this;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& other) : _name(other._name), _grade(other._grade)
 {
-	std::cout << GREY << "Bureaucrat copy constructor called\n" << RESET << *this;
+	std::cout <<std::endl  << GREY << "Bureaucrat copy constructor called\n" << RESET << *this;
 }
 
 Bureaucrat::~Bureaucrat() {
-	std::cout << GREY << "\nBureaucrat destructor called\n" << RESET;
+	std::cout << GREY << "Bureaucrat destructor called\n" << RESET;
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) {
-	std::cout << GREY << "Bureaucrat assignment operator called\n" << RESET;
+	std::cout <<std::endl  << GREY << "Bureaucrat assignment operator called\n" << RESET;
 	if (this != &other) {
 		this->_grade = other._grade;
 	}
@@ -65,16 +65,16 @@ void	Bureaucrat::signForm(Form& form)
 	try
 	{
 		form.beSigned(*this);
-		std::cout << GREEN << _name << " signed " << form.getName() << RESET << std::endl;
+		std::cout  <<std::endl << GREEN << _name << " signed " << form.getName() << RESET << std::endl;
 	}
 	catch(const std::exception& e)
 	{
-		std::cout <<RED << _name << " couldn't sign " << form.getName() << " because " << e.what() << RESET << '\n';
+		std::cout << std::endl <<RED << _name << " couldn't sign " << form.getName() << " because " << e.what() << RESET << "\n";
 	}
 	
 }
 
 std::ostream	&operator<<(std::ostream &os, const Bureaucrat& bureau) {
-	os << GREEN << bureau.getName() << ", bureaucrat grade " << bureau.getGrade() << "." << RESET << std::endl;
+	os << std::endl << GREEN << bureau.getName() << ", bureaucrat grade " << bureau.getGrade() << "." << RESET << std::endl;
 	return os;
 }
