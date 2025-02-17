@@ -1,11 +1,11 @@
-#ifndef FORM_HPP
-#define FORM_HPP
+#ifndef AFORM_HPP
+#define AFORM_HPP
 
 #include <iostream>
-#include <stdbool.h>
 
 #include "Bureaucrat.hpp"
 
+/* Color Sets */
 #define RESET   "\033[0m"
 #define BLACK   "\033[30m"
 #define RED     "\033[31m"
@@ -15,11 +15,11 @@
 #define MAGENTA "\033[35m"
 #define CYAN    "\033[36m"
 #define WHITE   "\033[37m"
-#define GREY 	"\033[38;5;250m"
+#define GREY    "\033[38;5;250m"
 
 class Bureaucrat;
 
-class Form {
+class AForm {
 private:
 	/* member attributes */
 	const std::string	_name;
@@ -29,11 +29,11 @@ private:
 
 public:
 	/* OCF */
-	Form();
-	Form(std::string name, int sGrade, int eGrade);
-	Form(const Form& other);
-	~Form();
-	Form& operator=(const Form& other);
+	AForm();
+	AForm(std::string name, int sGrade, int eGrade);
+	AForm(const AForm& other);
+	~AForm();
+	AForm& operator=(const AForm& other);
 
 	/* getter & setter */
 	std::string			getName() const;
@@ -54,7 +54,7 @@ public:
 	};
 };
 
-/* << operator */
-std::ostream	&operator<<(std::ostream &os, const Form& form);
+/* operators */
+std::ostream	&operator<<(std::ostream &os, const AForm& form);
 
 #endif

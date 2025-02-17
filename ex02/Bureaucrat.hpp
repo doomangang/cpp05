@@ -1,10 +1,9 @@
-#ifndef FORM_HPP
-#define FORM_HPP
+#ifndef BUREAUCRAT_HPP
+#define BUREAUCRAT_HPP
 
 #include <iostream>
-#include <stdbool.h>
 
-#include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 #define RESET   "\033[0m"
 #define BLACK   "\033[30m"
@@ -17,30 +16,30 @@
 #define WHITE   "\033[37m"
 #define GREY 	"\033[38;5;250m"
 
-class Bureaucrat;
+class Form;
 
-class Form {
+class Bureaucrat {
 private:
 	/* member attributes */
 	const std::string	_name;
-	bool				_isSigned;
-	const int			_signGrade;
-	const int			_execGrade;
+	int					_grade; // 1~150
 
 public:
 	/* OCF */
-	Form();
-	Form(std::string name, int sGrade, int eGrade);
-	Form(const Form& other);
-	~Form();
-	Form& operator=(const Form& other);
+	Bureaucrat();
+	Bureaucrat(const std::string name, int grade);
+	Bureaucrat(const Bureaucrat& other);
+	~Bureaucrat();
+	Bureaucrat& operator=(const Bureaucrat& other);
 
-	/* getter & setter */
+	/* getter */
 	std::string			getName() const;
-	bool				getSigned() const;
-	int					getSignGrade() const;
-	int					getExecGrade() const;
-	void				setSigned(Bureaucrat& bureau);
+	int					getGrade() const;
+	
+	/* additional methods */
+	void				incrementGrade();
+	void				decrementGrade();
+	void				signForm(Form& form);
 
 	/* exception classes */
 	class GradeTooHighException : public std::exception {
@@ -55,6 +54,6 @@ public:
 };
 
 /* << operator */
-std::ostream	&operator<<(std::ostream &os, const Form& form);
+std::ostream	&operator<<(std::ostream &os, const Bureaucrat& bureau);
 
 #endif
