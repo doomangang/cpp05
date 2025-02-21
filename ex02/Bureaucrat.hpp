@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
 #define RESET   "\033[0m"
 #define BLACK   "\033[30m"
@@ -16,7 +16,7 @@
 #define WHITE   "\033[37m"
 #define GREY 	"\033[38;5;250m"
 
-class Form;
+class AForm;
 
 class Bureaucrat {
 private:
@@ -39,7 +39,8 @@ public:
 	/* additional methods */
 	void				incrementGrade();
 	void				decrementGrade();
-	void				signForm(Form& form);
+	void				signForm(AForm& form);
+	void				executeForm(AForm const& form);
 
 	/* exception classes */
 	class GradeTooHighException : public std::exception {

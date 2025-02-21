@@ -1,22 +1,30 @@
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm() {
-	std::cout << "PresidentialPardonForm default constructor called\n";
+PresidentialPardonForm::PresidentialPardonForm() : _target("anywhere")
+{
+	std::cout << std::endl << GREY << "PresidentialPardonForm default constructor called\nTarget is" << RESET
+	<< _target << std::endl;
+}
+
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : _target(target)
+{
+	std::cout << std::endl << GREY << "PresidentialPardonForm constructor called\nTarget is " << RESET 
+	<< _target << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& other) {
 	*this = other;
-	std::cout << "PresidentialPardonForm copy constructor called\n";
+	std::cout << std::endl << GREY << "PresidentialPardonForm copy constructor called\n" << RESET;
 }
 
 PresidentialPardonForm::~PresidentialPardonForm() {
-	std::cout << "PresidentialPardonForm destructor called\n";
+	std::cout << std::endl << GREY << "PresidentialPardonForm destructor called\n" << RESET;
 }
 
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& other) {
-	std::cout << "PresidentialPardonForm assignment operator called\n";
+	std::cout << std::endl << GREY << "PresidentialPardonForm assignment operator called\n" << RESET;
 	if (this != &other) {
-		// assignment code here
+		
 	}
 	return *this;
 }

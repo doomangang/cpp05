@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+#include "AForm.hpp"
+
 /* Color Sets */
 #define RESET   "\033[0m"
 #define BLACK   "\033[30m"
@@ -18,19 +20,17 @@
 class ShrubberyCreationForm {
 private:
 	/* member attributes */
+	const std::string	_target;
 public:
 	/* OCF */
 	ShrubberyCreationForm();
+	ShrubberyCreationForm(std::string target);
 	ShrubberyCreationForm(const ShrubberyCreationForm& other);
 	~ShrubberyCreationForm();
 	ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
 
-	/* getter & setter */
-
-/* additional methods */
-
-/* exception classes */
+	/* additional methods */
+	void				execute(Bureaucrat const& executor) const;
 };
 
-/* operators */
 #endif

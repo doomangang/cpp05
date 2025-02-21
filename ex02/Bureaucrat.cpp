@@ -11,7 +11,7 @@ const char *Bureaucrat::GradeTooLowException::what() const throw() {
 
 Bureaucrat::Bureaucrat() : _name("default"), _grade(150)
 {
-	std::cout <<std::endl << GREY << "Bureaucrat default constructor called\n" << RESET << *this;
+	std::cout << std::endl << GREY << "Bureaucrat default constructor called\n" << RESET << *this;
 }
 
 Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name)
@@ -60,7 +60,7 @@ void	Bureaucrat::decrementGrade() {
 	std::cout << *this;
 }
 
-void	Bureaucrat::signForm(Form& form)
+void	Bureaucrat::signForm(AForm& form)
 {
 	try
 	{

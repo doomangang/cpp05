@@ -2,6 +2,7 @@
 #define ROBOTOMYREQUESTFORM_HPP
 
 #include <iostream>
+#include "AForm.hpp"
 
 /* Color Sets */
 #define RESET   "\033[0m"
@@ -18,19 +19,17 @@
 class RobotomyRequestForm {
 private:
 	/* member attributes */
+	const std::string	_target;
 public:
 	/* OCF */
 	RobotomyRequestForm();
+	RobotomyRequestForm(std::string target);
 	RobotomyRequestForm(const RobotomyRequestForm& other);
 	~RobotomyRequestForm();
 	RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
 
-	/* getter & setter */
-
-/* additional methods */
-
-/* exception classes */
+	/* additional methods */
+	void				execute(Bureaucrat const& executor) const;
 };
 
-/* operators */
 #endif

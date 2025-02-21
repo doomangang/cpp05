@@ -2,6 +2,7 @@
 #define PRESIDENTIALPARDONFORM_HPP
 
 #include <iostream>
+#include "AForm.hpp"
 
 /* Color Sets */
 #define RESET   "\033[0m"
@@ -15,22 +16,22 @@
 #define WHITE   "\033[37m"
 #define GREY    "\033[38;5;250m"
 
-class PresidentialPardonForm {
+class Bureaucrat;
+
+class PresidentialPardonForm : public AForm {
 private:
 	/* member attributes */
+	std::string	_target;
 public:
-	/* OCF */
+	/* OCF constructors */
 	PresidentialPardonForm();
+	PresidentialPardonForm(std::string target);
 	PresidentialPardonForm(const PresidentialPardonForm& other);
 	~PresidentialPardonForm();
 	PresidentialPardonForm& operator=(const PresidentialPardonForm& other);
 
-	/* getter & setter */
-
-/* additional methods */
-
-/* exception classes */
+	/* additional methods */
+	void				execute(Bureaucrat const& executor) const;
 };
 
-/* operators */
 #endif
