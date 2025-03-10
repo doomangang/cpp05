@@ -43,17 +43,23 @@ public:
 	void				setSigned(Bureaucrat& bureau);
 	
 	/* additional methods*/
-	virtual void		execute(Bureaucrat const& executor) const = 0;
+	void				execute(Bureaucrat const& executor) const;
+	virtual void		execAction() const = 0;
 
 	/* exception classes */
 	class GradeTooHighException : public std::exception {
 		public:
-			virtual const char *what() const throw();
+			const char *what() const throw();
 	};
 
 	class GradeTooLowException : public std::exception {
 		public:
-			virtual const char *what() const throw();
+			const char *what() const throw();
+	};
+
+	class FormNotSignedException : public std::exception {
+		public:
+			const char *what() const throw();
 	};
 };
 

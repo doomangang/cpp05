@@ -8,6 +8,10 @@ const char *AForm::GradeTooLowException::what() const throw() {
 	return ("Grade is TOO LOW to sign!");
 }
 
+const char *AForm::FormNotSignedException::what() const throw() {
+	return ("Form is NOT SIGNED yet!");
+}
+
 AForm::AForm() : _name("default"), _isSigned(false), _signGrade(150), _execGrade(150)
 {
 	std::cout <<std::endl  << GREY << "AForm default constructor called\n" << RESET << *this;
@@ -51,6 +55,15 @@ void	AForm::setSigned(Bureaucrat& bureau) {
 	if (bureau.getGrade() > _signGrade)
 		throw GradeTooLowException();
 	_isSigned = true;
+}
+
+void	AForm::execute(Bureaucrat const& executor) const
+{
+	if (!this->getSigned())
+		throw FormNotSignedException();
+	if (executor.getGrade() > this->getExecGrade())
+		throw GradeTooLowException();
+	execAction();
 }
 
 std::ostream	&operator<<(std::ostream &os, const AForm& aform) {

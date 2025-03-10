@@ -1,22 +1,39 @@
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm() {
-	std::cout << "RobotomyRequestForm default constructor called\n";
+RobotomyRequestForm::RobotomyRequestForm() : AForm("Robotomy", 72, 45), _target("Default")
+{
+	std::cout << std::endl << GREY << "RobotomyRequestForm default constructor called\n" << RESET;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) {
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("Robotomy", 72, 45), _target(target)
+{
+	std::cout << std::endl << GREY << "Custom RobotomyRequestForm constructor called\n" << RESET;
+}
+
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) :AForm(other)
+{
 	*this = other;
-	std::cout << "RobotomyRequestForm copy constructor called\n";
+	std::cout << std::endl << GREY << "RobotomyRequestForm copy constructor called\n" << RESET;
 }
 
 RobotomyRequestForm::~RobotomyRequestForm() {
-	std::cout << "RobotomyRequestForm destructor called\n";
+	std::cout << std::endl << GREY << "RobotomyRequestForm destructor called\n" << RESET;
 }
 
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& other) {
-	std::cout << "RobotomyRequestForm assignment operator called\n";
+	std::cout << std::endl << GREY << "RobotomyRequestForm assignment operator called\n" << RESET;
 	if (this != &other) {
-		// assignment code here
+		_target = other._target;
 	}
 	return *this;
+}
+
+void	RobotomyRequestForm::execAction() const {
+	std::cout << BLUE << "Drrrriiiilllll" << std::endl;
+	srand(time(NULL));
+	int	randNum = rand() % 2;
+	if (randNum == 1)
+		std::cout << GREEN << this->_target << "has been ROBOTOMIZED" << RESET << std::endl;
+	else
+		std::cout << RED << this->_target << "FAILED to be ROBOTOMIZED" << RESET << std::endl;
 }

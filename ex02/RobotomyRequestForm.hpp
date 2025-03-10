@@ -2,6 +2,8 @@
 #define ROBOTOMYREQUESTFORM_HPP
 
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include "AForm.hpp"
 
 /* Color Sets */
@@ -16,10 +18,10 @@
 #define WHITE   "\033[37m"
 #define GREY    "\033[38;5;250m"
 
-class RobotomyRequestForm {
+class RobotomyRequestForm : public AForm {
 private:
 	/* member attributes */
-	const std::string	_target;
+	std::string	_target;
 public:
 	/* OCF */
 	RobotomyRequestForm();
@@ -29,7 +31,7 @@ public:
 	RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
 
 	/* additional methods */
-	void				execute(Bureaucrat const& executor) const;
+	void		execAction() const;
 };
 
 #endif
