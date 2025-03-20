@@ -32,7 +32,7 @@ public:
 	AForm();
 	AForm(std::string name, int sGrade, int eGrade);
 	AForm(const AForm& other);
-	~AForm();
+	virtual	~AForm();
 	AForm& operator=(const AForm& other);
 
 	/* getter & setter */

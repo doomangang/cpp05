@@ -15,8 +15,38 @@ Intern::~Intern() {
 
 Intern& Intern::operator=(const Intern& other) {
 	std::cout << std::endl << GREY << "Intern assignment operator called\n" << RESET;
-	if (this != &other) {
-		// assignment code here
-	}
+	if (this != &other)
+		;
 	return *this;
 }
+
+const char *Intern::FormNotExist::what() const throw () { 
+	return ("Form you asked DOES NOT EXIST!");
+}
+
+AForm*	Intern::makeForm(std::string formName, std::string formTarget)
+{
+	std::string	formType[3] = {
+		"Presidential Pardon",
+		"Robotomy Resquest",
+		"Shrubbery Creation"
+	};
+
+	AForm*	(Intern::*formFactories[3])(std::string) = {
+		&Intern::makePresidentialPardonForm,
+		&Intern::makeRobotomyRequestForm,
+		&Intern::makeShrubberyCreationForm
+	};
+
+	for (int i = 0 ; i < 3 ; i++) {
+		if (formName == formType[i]) {
+			AForm *form = (this->*formFactories[i])(formTarget);
+			return form;
+		}
+	}
+	throw FormNotExist();
+}
+
+AForm*	Intern::makePresidentialPardonForm(std::string target) { return new PresidentialPardonForm(target);}
+AForm*	Intern::makeRobotomyRequestForm(std::string target)  { return new RobotomyRequestForm(target);}
+AForm*	Intern::makeShrubberyCreationForm(std::string target)  { return new ShrubberyCreationForm(target);}

@@ -3,6 +3,9 @@
 
 #include <iostream>
 #include "AForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 /* Color Sets */
 #define RESET   "\033[0m"
@@ -30,7 +33,15 @@ public:
 
 	/* additional methods */
 	AForm*	makeForm(std::string formName, std::string formTarget);
+	AForm*	makePresidentialPardonForm(std::string formName);
+	AForm*	makeRobotomyRequestForm(std::string formName);
+	AForm*	makeShrubberyCreationForm(std::string formName);
+
 	/* exception classes */
+	class FormNotExist : public std::exception {
+		public:
+			const char *what() const throw();
+	};
 };
 
 /* operators */
