@@ -1,27 +1,39 @@
-// #include <stdio.h>
-
-#include "AForm.hpp"
-#include "Bureaucrat.hpp"
+#include <sstream>
 #include "Intern.hpp"
-#include "PresidentialPardonForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "ShrubberyCreationForm.hpp"
+#include "Bureaucrat.hpp"
+#include "AForm.hpp"
 
-void leak(void) { system("leaks Bureaucrat"); }
+void leaktest() { system("leaks Intern"); }
 
-int main(void) {
-  // atexit(leak);
-  AForm *rrf = 0;
-  try {
-    Bureaucrat test1("test", 3);
-    Intern intern1;
-    rrf = intern1.makeForm("Non-existent form", "Bender4");
-    std::cout << *rrf << std::endl;
-    test1.signForm(*rrf);
-    test1.executeForm(*rrf);
-  } catch (std::exception &e) {
-    std::cout << e.what() << std::endl;
-  }
-  delete rrf;
-  rrf = 0;
+int main() {
+	atexit(leaktest);
+	Intern intern;
+	Bureaucrat bureaucrat("John", 1);
+	std::stringstream	ss;
+
+	std::string formNames[4] = {
+		"Presidential Pardon",
+		"Robotomy Resquest",
+		"Shrubbery Creation",
+		"Invalid Form"
+	};
+
+	AForm *form = 0;
+	for (int i = 0; i < 4; i++) {
+		try {
+			ss.str(std::string());
+			ss << "Target" << i + 1;
+			std::cout << BLUE << "\n[Requesting form: " << formNames[i] << "]" << RESET << std::endl;
+			form = intern.makeForm(formNames[i], ss.str());
+			std::cout << *form << std::endl;
+			bureaucrat.signForm(*form);
+			bureaucrat.executeForm(*form);
+		}
+		catch (const std::exception &e) {
+			std::cerr << RED << "Error: " << e.what() << RESET << std::endl;
+		}
+		delete form;
+		form = 0;
+	}
+	return 0;
 }

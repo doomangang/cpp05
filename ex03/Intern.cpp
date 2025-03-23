@@ -40,6 +40,7 @@ AForm*	Intern::makeForm(std::string formName, std::string formTarget)
 
 	for (int i = 0 ; i < 3 ; i++) {
 		if (formName == formType[i]) {
+			std::cout << GREEN << "Intern creates " << formType[i] << " form" << RESET << std::endl;
 			AForm *form = (this->*formFactories[i])(formTarget);
 			return form;
 		}

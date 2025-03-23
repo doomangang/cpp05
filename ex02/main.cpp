@@ -9,14 +9,14 @@ int main()
 {
 	try
 	{
-		std::cout << "\n\033[1;32m--------shure---------------\033[0m\n";
-		Bureaucrat	bur("bureau_shure", 3);
-		ShrubberyCreationForm form_shur("target_shure");
-		bur.signForm(form_shur);
-		bur.executeForm(form_shur);
+		std::cout << "\n\033[1;32m--------tree---------------\033[0m\n";
+		Bureaucrat	bureau("bureau_tree", 3);
+		ShrubberyCreationForm form_shrub("house");
+		bureau.signForm(form_shrub);
+		bureau.executeForm(form_shrub);
 
 		std::cout << GREEN << "let's check if shrubbery REALLY has been successfully planted" << RESET << std::endl;
-		std::string	filename = form_shur.getFilename();
+		std::string	filename = form_shrub.getFilename();
 		std::ifstream	file(filename);
 		if (!file) {
 			std::cerr <<RED << "failed to open " << filename << RESET <<std::endl;
@@ -28,25 +28,17 @@ int main()
 		}
 		file.close();
 
-		std::cout << "\n\033[1;32m---------press--------------\033[0m\n";
-		Bureaucrat	bur2("bureau_presi", 2);
-		PresidentialPardonForm form_pres("target_president");
-		bur2.signForm(form_pres);
-		form_pres.execute(bur2);
+		std::cout << "\n\033[1;32m---------president--------------\033[0m\n";
+		Bureaucrat	bureau2("bureau_president", 2);
+		PresidentialPardonForm form_president("john");
+		bureau2.signForm(form_president);
+		form_president.execute(bureau2);
 
 		std::cout << "\n\033[1;32m---------robo--------------\033[0m\n";
-		Bureaucrat	bur3("bureau_robo", 2);
-		RobotomyRequestForm form_robo("target_robo");
-		bur3.signForm(form_robo);
-		bur3.executeForm(form_robo);
-	}
-	catch(const AForm::GradeTooHighException& e)
-	{
-		std::cerr << e.what() <<std::endl;
-	}
-	catch(const AForm::GradeTooLowException& e)
-	{
-		std::cerr << e.what() << std::endl;
+		Bureaucrat	bureau3("bureau_robo", 2);
+		RobotomyRequestForm form_robo("alien");
+		bureau3.signForm(form_robo);
+		bureau3.executeForm(form_robo);
 	}
 	catch(const std::exception& e)
 	{

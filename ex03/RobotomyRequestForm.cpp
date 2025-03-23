@@ -33,7 +33,7 @@ void	RobotomyRequestForm::execAction() const {
 	srand(time(NULL));
 	int	randNum = rand() % 2;
 	if (randNum == 1)
-		std::cout << GREEN << this->_target << "has been ROBOTOMIZED" << RESET << std::endl;
+		std::cout << GREEN << this->_target << " has been ROBOTOMIZED" << RESET << std::endl;
 	else
-		std::cout << RED << this->_target << "FAILED to be ROBOTOMIZED" << RESET << std::endl;
+		std::cout << RED << this->_target << " FAILED to be ROBOTOMIZED" << RESET << std::endl;
 }
