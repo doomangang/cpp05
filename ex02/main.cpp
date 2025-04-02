@@ -17,7 +17,7 @@ int main()
 
 		std::cout << GREEN << "let's check if shrubbery REALLY has been successfully planted" << RESET << std::endl;
 		std::string	filename = form_shrub.getFilename();
-		std::ifstream	file(filename);
+		std::ifstream	file(filename.c_str());
 		if (!file) {
 			std::cerr <<RED << "failed to open " << filename << RESET <<std::endl;
 		}

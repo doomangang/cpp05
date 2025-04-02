@@ -64,7 +64,7 @@ void	Bureaucrat::signForm(AForm& form)
 {
 	try
 	{
-		form.setSigned(*this);
+		form.beSigned(*this);
 		std::cout  <<std::endl << GREEN << _name << " signed " << form.getName() << RESET << std::endl;
 	}
 	catch(const std::exception& e)

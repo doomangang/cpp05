@@ -32,7 +32,7 @@ std::string	ShrubberyCreationForm::getFilename() { return _target + "_shrubbery"
 
 void	ShrubberyCreationForm::execAction() const {
 	std::string filename = this->_target + "_shrubbery";
-	std::ofstream	file(filename);
+	std::ofstream	file(filename.c_str());
 	if (file.is_open())
 	{
 		file << "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⢀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀" << std::endl;

@@ -40,7 +40,7 @@ public:
 	bool				getSigned() const;
 	int					getSignGrade() const;
 	int					getExecGrade() const;
-	void				setSigned(Bureaucrat& bureau);
+	void				beSigned(Bureaucrat& bureau);
 
 	/* exception classes */
 	class GradeTooHighException : public std::exception {
