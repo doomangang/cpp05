@@ -16,7 +16,7 @@ Intern::~Intern() {
 Intern& Intern::operator=(const Intern& other) {
 	std::cout << std::endl << GREY << "Intern assignment operator called\n" << RESET;
 	if (this != &other)
-		;
+		return *this;
 	return *this;
 }
 
