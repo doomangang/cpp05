@@ -3,10 +3,7 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 
-void leaktest() { system("leaks Intern"); }
-
 int main() {
-	atexit(leaktest);
 	Intern intern;
 	Bureaucrat bureaucrat("John", 1);
 	std::stringstream	ss;
